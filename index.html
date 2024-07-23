@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Chat Analyzer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@1.1.1"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
+
+
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-chart-bar"></i>WhatsApp Chat Analyzer</h1>
+
+        <div id="drop-zone" class="drop-zone">
+            <p>Drag and drop your chat file here, or click to select the file</p>
+        </div>
+        <input type="file" id="file-input" style="display: none;">
+
+        <div id="info" class="info hidden">
+            <h2>Info</h2>
+            <div class="grid">
+                <div class="card total-messages">
+                    <h3>Total Messages</h3>
+                    <p class="value" id="total-messages"></p>
+                </div>
+                <div class="card total-users">
+                    <h3>Total Users</h3>
+                    <p class="value" id="total-users"></p>
+                </div>
+                <div class="card days-from-beginning">
+                    <h3>Days from Beginning</h3>
+                    <p class="value" id="days-from-beginning"></p>
+                </div>
+                <div class="card average-messages-per-day">
+                    <h3>Avg. Messages per Day</h3>
+                    <p class="value" id="average-messages-per-day"></p>
+                </div>
+                <div class="card most-talkative-user">
+                    <h3>Most Talkative User</h3>
+                    <p class="value" id="most-talkative-user"></p>
+                </div>
+                <div class="card night-owl">
+                    <h3>Night Owl</h3>
+                    <p class="value" id="night-owl"></p>
+                </div>
+                <div class="card early-bird">
+                    <h3>Early Bird</h3>
+                    <p class="value" id="early-bird"></p>
+                </div>
+                <div class="card wrecker">
+                    <h3>Conversation Ender</h3>
+                    <p class="value" id="wrecker"></p>
+                </div>
+                <div class="card starter">
+                    <h3>Conversation Starter</h3>
+                    <p class="value" id="starter"></p>
+                </div>
+                <div class="card professor">
+                    <h3>Professor</h3>
+                    <p class="value" id="professor"></p>
+                </div>
+                <div class="card long-winded">
+                    <h3>Long-winded</h3>
+                    <p class="value" id="long-winded"></p>
+                </div>
+                <div class="card slowest">
+                    <h3>Slowest Responder</h3>
+                    <p class="value" id="slowest"></p>
+                </div>
+                <div class="card fastest">
+                    <h3>Fastest Responder</h3>
+                    <p class="value" id="fastest"></p>
+                </div>
+                <div class="card emoji-lover">
+                    <h3>Emoji Lover</h3>
+                    <p class="value" id="emoji-lover"></p>
+                </div>
+                <div class="card annoying">
+                    <h3>Most Annoying</h3>
+                    <p class="value" id="annoying"></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="stats" class="stats hidden">
+            <h2>Stats</h2>
+            <select id="user-select">
+                <option value="all">All Users</option>
+            </select>
+            <div class="grid">
+                <div class="card most-used-emoticons">
+                    <h3>Most Used Emojis</h3>
+                    <div id="most-used-emoticons"></div>
+                </div>
+                <div class="card most-sent-links">
+                    <h3>Most Sent Links</h3>
+                    <div id="most-sent-links"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="charts" class="charts hidden">
+            <h2>Charts</h2>
+            <div class="chart-grid">
+                <div class="chart-card">
+                    <canvas id="messages-per-hour"></canvas>
+                    <span>Messages per Hour</span>
+                </div>
+                <div class="chart-card">
+                    <canvas id="messages-per-date"></canvas>
+                    <span>Messages per Date</span>
+                </div>
+                <div class="chart-card">
+                    <canvas id="messages-per-day"></canvas>
+                    <span>Messages per Day</span>
+                </div>
+                <div class="chart-card">
+                    <canvas id="messages-by-author"></canvas>
+                    <span>Messages by Author</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
